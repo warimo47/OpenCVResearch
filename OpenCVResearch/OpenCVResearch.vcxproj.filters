@@ -13,10 +13,30 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="헤더 파일\json">
+      <UniqueIdentifier>{ba2865ca-d41b-41e4-a33e-de847caa001c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="OpenCVResearch.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Pos.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="jsoncpp.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Pos.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="json\json-forwards.h">
+      <Filter>헤더 파일\json</Filter>
+    </ClInclude>
+    <ClInclude Include="json\json.h">
+      <Filter>헤더 파일\json</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

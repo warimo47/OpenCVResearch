@@ -135,7 +135,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="jsoncpp.cpp" />
     <ClCompile Include="OpenCVResearch.cpp" />
+    <ClCompile Include="Pos.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="json\json-forwards.h" />
+    <ClInclude Include="json\json.h" />
+    <ClInclude Include="Pos.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
