@@ -18,9 +18,11 @@
 using namespace cv;
 using namespace std;
 
+void CalculateMinMaxRGB();
+
 void VideoPlay();
 
-bool ProcessKeyboardEvent(int* thresh);
+int ProcessKeyboardEvent(int* thresh);
 
 void HoughLinesSegments();
 
@@ -33,6 +35,9 @@ void JsonWrite();
 void VideoCrop();
 void VideoResizing();
 
+void MakeMaskImage();
+void NewMasking(int maxR, int maxG, int maxB, int minR, int minG, int minB);
+
 Mat originalImg;
 Mat maskImg;
 Mat sobelEdgeImg;
@@ -44,6 +49,8 @@ vector<Pos> targetPixels;
 int main()
 {
     JsonRead();
+
+    MakeMaskImage();
 
     namedWindow("Original Img", 1);
     namedWindow("Mask Img", 1);
@@ -63,6 +70,31 @@ int main()
     return 0;
 }
 
+void CalculateMinMaxRGB()
+{
+    int minR = 255;
+    int minG = 255;
+    int minB = 255;
+    int maxR = 0;
+    int maxG = 0;
+    int maxB = 0;
+
+    for (auto tp : targetPixels)
+    {
+        minB = min(minB, (int)originalImg.data[tp._y * originalImg.cols * 3 + tp._x * 3 + 0]);
+        minG = min(minG, (int)originalImg.data[tp._y * originalImg.cols * 3 + tp._x * 3 + 1]);
+        minR = min(minR, (int)originalImg.data[tp._y * originalImg.cols * 3 + tp._x * 3 + 2]);
+        maxB = max(maxB, (int)originalImg.data[tp._y * originalImg.cols * 3 + tp._x * 3 + 0]);
+        maxG = max(maxG, (int)originalImg.data[tp._y * originalImg.cols * 3 + tp._x * 3 + 1]);
+        maxR = max(maxR, (int)originalImg.data[tp._y * originalImg.cols * 3 + tp._x * 3 + 2]);
+    }
+
+    cout << "Max R " << maxR << " G " << maxG << " R " << maxR << endl;
+    cout << "Min R " << minR << " G " << minG << " R " << minR << endl;
+
+    NewMasking(maxR, maxG, maxB, minR, minG, minB);
+}
+
 void VideoPlay()
 {
     VideoCapture cap("IMG_2816_480p.mp4");
@@ -70,16 +102,21 @@ void VideoPlay()
     if (!cap.isOpened())
         std::cout << "Error when reading stream";
     
-    double ret;
     int thresh = 177;
+    int inputRet;
+    
+    cursorY = targetPixels[targetPixels.size() - 1]._y;
+    cursorX = targetPixels[targetPixels.size() - 1]._x;
 
     Mat originalImgCopy;
     Mat MaskImgCopy;
-    maskImg = Mat::zeros(640, 480, CV_8UC3);
     
+    bool readNewImage = true;
+
     while (true)
     {
-        cap >> originalImg;
+        if (readNewImage)
+            cap >> originalImg;
         if (originalImg.empty())
             break;
 
@@ -103,8 +140,14 @@ void VideoPlay()
         // imshow("Sobel Edge Img", sobelEdgeImg);
         // imshow("Threshold Img", thresholdImg);
 
-        if (ProcessKeyboardEvent(&thresh) == false)
+        inputRet = ProcessKeyboardEvent(&thresh);
+
+        if (inputRet == 0)
             break;
+        else if (inputRet == 1)
+            readNewImage = false;
+        else
+            readNewImage = true;
     }
 
     std::cout << "VideoPlay() end" << endl;
@@ -112,12 +155,12 @@ void VideoPlay()
     cap.release();
 }
 
-bool ProcessKeyboardEvent(int* thresh)
+int ProcessKeyboardEvent(int* thresh)
 {
     int inputKey = waitKeyEx(0);
     if (inputKey == 'q')
     {
-        return false;
+        return 0;
     }
     else if (inputKey == 'w')
     {
@@ -160,10 +203,20 @@ bool ProcessKeyboardEvent(int* thresh)
         maskImg.data[cursorY * maskImg.cols * 3 + cursorX * 3 + 1] = 0;
         maskImg.data[cursorY * maskImg.cols * 3 + cursorX * 3 + 2] = 255;
     }
+    else if (inputKey == 'n')
+    {
+        return 2;
+    }
+    else if (inputKey == 'c')
+    {
+        CalculateMinMaxRGB();
+    }
     else
     {
         std::cout << "inputKey : " << inputKey << endl;
     }
+
+    return 1;
 }
 
 void CallBackFuncOriginal(int event, int x, int y, int flags, void* userdata)
@@ -270,12 +323,19 @@ void JsonRead()
     }
 
     Json::Value PosList = root.get("Pos", root);
-    Json::Value Pos = PosList[0];
-    Json::Value y = Pos.get("y", Pos);
-    Json::Value x = Pos.get("x", Pos);
 
-    int _y = y.asInt();
-    int _x = x.asInt();
+    targetPixels.clear();
+    int intY, intX;
+    Json::Value pos, y, x;
+    for (int i = 0; i < PosList.size(); ++i)
+    {
+        pos = PosList[i];
+        y = pos.get("y", pos);
+        x = pos.get("x", pos);
+        intY = y.asInt();
+        intX = x.asInt();
+        targetPixels.push_back(Pos{ intY, intX });
+    }
     
     int a = 3;
 }
@@ -386,4 +446,42 @@ void VideoResizing()
 
     cap.release();
     wri.release();
+}
+
+void MakeMaskImage()
+{
+    maskImg = Mat::zeros(640, 480, CV_8UC3);
+
+    for (auto tp : targetPixels)
+    {
+        maskImg.data[tp._y * maskImg.cols * 3 + tp._x * 3 + 0] = 0;
+        maskImg.data[tp._y * maskImg.cols * 3 + tp._x * 3 + 1] = 0;
+        maskImg.data[tp._y * maskImg.cols * 3 + tp._x * 3 + 2] = 255;
+    }
+}
+
+void NewMasking(int maxR, int maxG, int maxB, int minR, int minG, int minB)
+{
+    int r, g, b;
+
+    targetPixels.clear();
+    maskImg = Mat::zeros(640, 480, CV_8UC3);
+
+    for (int y = 0; y < originalImg.rows; ++y)
+    {
+        for (int x = 0; x < originalImg.cols; ++x)
+        {
+            b = originalImg.data[y * originalImg.cols * 3 + x * 3 + 0];
+            g = originalImg.data[y * originalImg.cols * 3 + x * 3 + 1];
+            r = originalImg.data[y * originalImg.cols * 3 + x * 3 + 2];
+
+            if ((minB <= b && b <= maxB) && (minG <= g && g <= maxG) && (minR <= r && r <= maxR))
+            {
+                targetPixels.push_back(Pos{ y, x });
+                maskImg.data[y * maskImg.cols * 3 + x * 3 + 0] = 0;
+                maskImg.data[y * maskImg.cols * 3 + x * 3 + 1] = 0;
+                maskImg.data[y * maskImg.cols * 3 + x * 3 + 2] = 255;
+            }
+        }
+    }
 }
