@@ -135,11 +135,71 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ArUcoMarkerTest.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="ArUco\cameraparameters.cpp" />
+    <ClCompile Include="ArUco\cvdrawingutils.cpp" />
+    <ClCompile Include="ArUco\dcf\dcfmarkermaptracker.cpp" />
+    <ClCompile Include="ArUco\dcf\dcfmarkertracker.cpp" />
+    <ClCompile Include="ArUco\dcf\dcf_utils.cpp" />
+    <ClCompile Include="ArUco\dcf\trackerimpl.cpp" />
+    <ClCompile Include="ArUco\debug.cpp" />
+    <ClCompile Include="ArUco\dictionary.cpp" />
+    <ClCompile Include="ArUco\dictionary_based.cpp" />
+    <ClCompile Include="ArUco\fractaldetector.cpp" />
+    <ClCompile Include="ArUco\fractallabelers\fractallabeler.cpp" />
+    <ClCompile Include="ArUco\fractallabelers\fractalmarker.cpp" />
+    <ClCompile Include="ArUco\fractallabelers\fractalmarkerset.cpp" />
+    <ClCompile Include="ArUco\fractallabelers\fractalposetracker.cpp" />
+    <ClCompile Include="ArUco\ippe.cpp" />
+    <ClCompile Include="ArUco\marker.cpp" />
+    <ClCompile Include="ArUco\markerdetector.cpp" />
+    <ClCompile Include="ArUco\markerdetector_impl.cpp" />
+    <ClCompile Include="ArUco\markerlabeler.cpp" />
+    <ClCompile Include="ArUco\markermap.cpp" />
+    <ClCompile Include="ArUco\posetracker.cpp" />
+    <ClCompile Include="CreateMarkerTest.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="jsoncpp.cpp" />
-    <ClCompile Include="OpenCVResearch.cpp" />
+    <ClCompile Include="OpenCVResearch.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="Pos.cpp" />
+    <ClCompile Include="QRCodeTest.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ArUco\aruco.h" />
+    <ClInclude Include="ArUco\aruco_cvversioning.h" />
+    <ClInclude Include="ArUco\aruco_export.h" />
+    <ClInclude Include="ArUco\cameraparameters.h" />
+    <ClInclude Include="ArUco\cvdrawingutils.h" />
+    <ClInclude Include="ArUco\dcf\dcfmarkermaptracker.h" />
+    <ClInclude Include="ArUco\dcf\dcfmarkertracker.h" />
+    <ClInclude Include="ArUco\dcf\dcf_utils.h" />
+    <ClInclude Include="ArUco\dcf\trackerimpl.h" />
+    <ClInclude Include="ArUco\debug.h" />
+    <ClInclude Include="ArUco\dictionary.h" />
+    <ClInclude Include="ArUco\dictionary_based.h" />
+    <ClInclude Include="ArUco\fractaldetector.h" />
+    <ClInclude Include="ArUco\fractallabelers\fractallabeler.h" />
+    <ClInclude Include="ArUco\fractallabelers\fractalmarker.h" />
+    <ClInclude Include="ArUco\fractallabelers\fractalmarkerset.h" />
+    <ClInclude Include="ArUco\fractallabelers\fractalposetracker.h" />
+    <ClInclude Include="ArUco\ippe.h" />
+    <ClInclude Include="ArUco\levmarq.h" />
+    <ClInclude Include="ArUco\marker.h" />
+    <ClInclude Include="ArUco\markerdetector.h" />
+    <ClInclude Include="ArUco\markerdetector_impl.h" />
+    <ClInclude Include="ArUco\markerlabeler.h" />
+    <ClInclude Include="ArUco\markermap.h" />
+    <ClInclude Include="ArUco\picoflann.h" />
+    <ClInclude Include="ArUco\posetracker.h" />
+    <ClInclude Include="ArUco\timers.h" />
     <ClInclude Include="json\json-forwards.h" />
     <ClInclude Include="json\json.h" />
     <ClInclude Include="Pos.h" />

@@ -16,6 +16,15 @@
     <Filter Include="헤더 파일\json">
       <UniqueIdentifier>{ba2865ca-d41b-41e4-a33e-de847caa001c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ArUco">
+      <UniqueIdentifier>{efe20a20-ada4-489b-b4c1-190ae57c0229}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ArUco\fractallabelers">
+      <UniqueIdentifier>{93184d17-8923-41c8-94c8-badc4bcfbe19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ArUco\dcf">
+      <UniqueIdentifier>{71507254-f569-4e08-8f95-5959372f0a31}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="OpenCVResearch.cpp">
@@ -25,6 +34,78 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="jsoncpp.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ArUcoMarkerTest.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ArUco\cameraparameters.cpp">
+      <Filter>ArUco</Filter>
+    </ClCompile>
+    <ClCompile Include="ArUco\cvdrawingutils.cpp">
+      <Filter>ArUco</Filter>
+    </ClCompile>
+    <ClCompile Include="ArUco\debug.cpp">
+      <Filter>ArUco</Filter>
+    </ClCompile>
+    <ClCompile Include="ArUco\dictionary.cpp">
+      <Filter>ArUco</Filter>
+    </ClCompile>
+    <ClCompile Include="ArUco\dictionary_based.cpp">
+      <Filter>ArUco</Filter>
+    </ClCompile>
+    <ClCompile Include="ArUco\fractaldetector.cpp">
+      <Filter>ArUco</Filter>
+    </ClCompile>
+    <ClCompile Include="ArUco\ippe.cpp">
+      <Filter>ArUco</Filter>
+    </ClCompile>
+    <ClCompile Include="ArUco\marker.cpp">
+      <Filter>ArUco</Filter>
+    </ClCompile>
+    <ClCompile Include="ArUco\markerdetector.cpp">
+      <Filter>ArUco</Filter>
+    </ClCompile>
+    <ClCompile Include="ArUco\markerdetector_impl.cpp">
+      <Filter>ArUco</Filter>
+    </ClCompile>
+    <ClCompile Include="ArUco\markerlabeler.cpp">
+      <Filter>ArUco</Filter>
+    </ClCompile>
+    <ClCompile Include="ArUco\markermap.cpp">
+      <Filter>ArUco</Filter>
+    </ClCompile>
+    <ClCompile Include="ArUco\posetracker.cpp">
+      <Filter>ArUco</Filter>
+    </ClCompile>
+    <ClCompile Include="ArUco\fractallabelers\fractallabeler.cpp">
+      <Filter>ArUco\fractallabelers</Filter>
+    </ClCompile>
+    <ClCompile Include="ArUco\fractallabelers\fractalmarker.cpp">
+      <Filter>ArUco\fractallabelers</Filter>
+    </ClCompile>
+    <ClCompile Include="ArUco\fractallabelers\fractalmarkerset.cpp">
+      <Filter>ArUco\fractallabelers</Filter>
+    </ClCompile>
+    <ClCompile Include="ArUco\fractallabelers\fractalposetracker.cpp">
+      <Filter>ArUco\fractallabelers</Filter>
+    </ClCompile>
+    <ClCompile Include="ArUco\dcf\dcf_utils.cpp">
+      <Filter>ArUco\dcf</Filter>
+    </ClCompile>
+    <ClCompile Include="ArUco\dcf\dcfmarkermaptracker.cpp">
+      <Filter>ArUco\dcf</Filter>
+    </ClCompile>
+    <ClCompile Include="ArUco\dcf\dcfmarkertracker.cpp">
+      <Filter>ArUco\dcf</Filter>
+    </ClCompile>
+    <ClCompile Include="ArUco\dcf\trackerimpl.cpp">
+      <Filter>ArUco\dcf</Filter>
+    </ClCompile>
+    <ClCompile Include="CreateMarkerTest.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="QRCodeTest.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
@@ -37,6 +118,87 @@
     </ClInclude>
     <ClInclude Include="json\json.h">
       <Filter>헤더 파일\json</Filter>
+    </ClInclude>
+    <ClInclude Include="ArUco\aruco.h">
+      <Filter>ArUco</Filter>
+    </ClInclude>
+    <ClInclude Include="ArUco\aruco_cvversioning.h">
+      <Filter>ArUco</Filter>
+    </ClInclude>
+    <ClInclude Include="ArUco\aruco_export.h">
+      <Filter>ArUco</Filter>
+    </ClInclude>
+    <ClInclude Include="ArUco\cameraparameters.h">
+      <Filter>ArUco</Filter>
+    </ClInclude>
+    <ClInclude Include="ArUco\cvdrawingutils.h">
+      <Filter>ArUco</Filter>
+    </ClInclude>
+    <ClInclude Include="ArUco\debug.h">
+      <Filter>ArUco</Filter>
+    </ClInclude>
+    <ClInclude Include="ArUco\dictionary.h">
+      <Filter>ArUco</Filter>
+    </ClInclude>
+    <ClInclude Include="ArUco\dictionary_based.h">
+      <Filter>ArUco</Filter>
+    </ClInclude>
+    <ClInclude Include="ArUco\fractaldetector.h">
+      <Filter>ArUco</Filter>
+    </ClInclude>
+    <ClInclude Include="ArUco\ippe.h">
+      <Filter>ArUco</Filter>
+    </ClInclude>
+    <ClInclude Include="ArUco\levmarq.h">
+      <Filter>ArUco</Filter>
+    </ClInclude>
+    <ClInclude Include="ArUco\marker.h">
+      <Filter>ArUco</Filter>
+    </ClInclude>
+    <ClInclude Include="ArUco\markerdetector.h">
+      <Filter>ArUco</Filter>
+    </ClInclude>
+    <ClInclude Include="ArUco\markerdetector_impl.h">
+      <Filter>ArUco</Filter>
+    </ClInclude>
+    <ClInclude Include="ArUco\markerlabeler.h">
+      <Filter>ArUco</Filter>
+    </ClInclude>
+    <ClInclude Include="ArUco\markermap.h">
+      <Filter>ArUco</Filter>
+    </ClInclude>
+    <ClInclude Include="ArUco\picoflann.h">
+      <Filter>ArUco</Filter>
+    </ClInclude>
+    <ClInclude Include="ArUco\posetracker.h">
+      <Filter>ArUco</Filter>
+    </ClInclude>
+    <ClInclude Include="ArUco\timers.h">
+      <Filter>ArUco</Filter>
+    </ClInclude>
+    <ClInclude Include="ArUco\fractallabelers\fractallabeler.h">
+      <Filter>ArUco\fractallabelers</Filter>
+    </ClInclude>
+    <ClInclude Include="ArUco\fractallabelers\fractalmarker.h">
+      <Filter>ArUco\fractallabelers</Filter>
+    </ClInclude>
+    <ClInclude Include="ArUco\fractallabelers\fractalmarkerset.h">
+      <Filter>ArUco\fractallabelers</Filter>
+    </ClInclude>
+    <ClInclude Include="ArUco\fractallabelers\fractalposetracker.h">
+      <Filter>ArUco\fractallabelers</Filter>
+    </ClInclude>
+    <ClInclude Include="ArUco\dcf\dcf_utils.h">
+      <Filter>ArUco\dcf</Filter>
+    </ClInclude>
+    <ClInclude Include="ArUco\dcf\dcfmarkermaptracker.h">
+      <Filter>ArUco\dcf</Filter>
+    </ClInclude>
+    <ClInclude Include="ArUco\dcf\dcfmarkertracker.h">
+      <Filter>ArUco\dcf</Filter>
+    </ClInclude>
+    <ClInclude Include="ArUco\dcf\trackerimpl.h">
+      <Filter>ArUco\dcf</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
