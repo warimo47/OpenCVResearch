@@ -15,7 +15,7 @@
 
 int main()
 {
-    cv::Mat image = cv::imread("ArUco_Marker_Images/test2.png");
+    cv::Mat image = cv::imread("ArUco_Marker_Images/multi_test_4.jpg");
 
     aruco::MarkerDetector MDetector;
 
