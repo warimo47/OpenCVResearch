@@ -11,7 +11,7 @@
 
 int main()
 {
-    cv::Mat img = cv::imread("QR_Code_Images/qr_code_test_108px_532_372.jpg");
+    cv::Mat img = cv::imread("QR_Code_Images/qr_code_test_108px_4.jpg");
 
     cv::QRCodeDetector decoder = cv::QRCodeDetector();
     std::vector<cv::Point> points;
